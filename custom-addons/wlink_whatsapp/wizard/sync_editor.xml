@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="wlink_whatsapp_contact_list" model="ir.ui.view">
+        <field name="name">wlink_whatsapp.contact.view</field>
+        <field name="model">wlink_whatsapp.contact</field>
+        <field name="arch" type="xml">
+            <list multi_edit="1" editable="top">
+                <field name="username" readonly="1"/>
+                <field name="name" readonly="1"/>
+                <field name="phone" readonly="1"/>
+                <field name="keep"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="whatsapp_sync_editor_form" model="ir.ui.view">
+        <field name="name">wlink_whatsapp.sync_editor.form</field>
+        <field name="model">wlink_whatsapp.sync_editor</field>
+        <field name="arch" type="xml">
+            <form string="Whatsapp Synchronization">
+                <group>
+                    <field name="connection"/>
+                    <field name="contacts_to_sync"/>
+                </group>
+
+                <footer>
+                    <div style="display: flex; justify-content: space-between; width: 100%">
+                        <div style="display: flex; gap: 4px;">
+                            <button string="Import" class="btn btn-primary" name="synchronize" type="object"/>
+                            <button string="Cancel" special="cancel"/>
+                        </div>
+
+                        <div style="display: flex; gap: 4px;">
+                            <button string="Select all"               name="select_all"               type="object"/>
+                            <button string="Select saved contacts"    name="select_saved_contacts"    type="object"/>
+                            <button string="Deselect all"             name="deselect_all"             type="object"/>
+                        </div>
+                    </div>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- If the next menu doesn't appear, Look at ir.model.access. You may not have the necessary permissions. -->
+    <record id="action_whatsapp_sync_editor" model="ir.actions.act_window">
+        <field name="name">Whatsapp Synchronization</field>
+        <field name="res_model">wlink_whatsapp.sync_editor</field>
+        <field name="target">new</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="whatsapp_sync_editor_form"/>
+    </record>
+</odoo>

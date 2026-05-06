@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <!-- List View -->
+        <record model="ir.ui.view" id="view_whatsapp_connection_list">
+            <field name="name">whatsapp.connection.list</field>
+            <field name="model">whatsapp.connection</field>
+            <field name="arch" type="xml">
+                <list string="Whatsapp Connections" decoration-success="logged_in" decoration-danger="not logged_in">
+                    <field name="name"/>
+                    <field name="connection_status"/>
+                    <field name="logged_in" widget="boolean_toggle"/>
+                    <field name="api_usage_percent" widget="progressbar" options="{'max_value': 100, 'bar_color': 'success'}"/>
+                    <field name="requests_left"/>
+                    <button name="refresh_usage" string="" type="object" icon="fa-refresh" class="btn btn-sm btn-outline-success"/>
+                    <button name="login" string="" type="object" icon="fa-user" class="btn btn-sm btn-outline-primary"/>
+                    <button name="logout" string="" type="object" icon="oi-close" class="btn btn-sm btn-outline-danger"/>
+                </list>
+            </field>
+        </record>
+
+        <!-- Form View -->
+        <record model="ir.ui.view" id="view_whatsapp_connection_form">
+            <field name="name">whatsapp.connection.form</field>
+            <field name="model">whatsapp.connection</field>
+            <field name="arch" type="xml">
+                <form string="Whatsapp Connection">
+                    <header>
+                        <button string="Login" class="btn btn-primary" icon="oi-person" name="login" type="object"/>
+                        <button string="Logout" class="btn btn-secondary" icon="oi-close" name="logout" type="object"/>
+                        <button string="Set as Default" class="btn btn-secondary" icon="fa-server" name="set_as_default_connection" type="object"/>
+                        <button string="Check Status" class="btn btn-secondary" icon="oi-arrow-clockwise" name="check_status" type="object"/>
+                    </header>
+                    <sheet>
+                        <div class="d-flex flex-column gap-3">
+                            <!-- Connection Info -->
+                            <div class="bg-view border rounded-3 p-3 d-flex align-items-center justify-content-between">
+                                <h1 class="m-0 d-flex align-items-center fw-bold">
+                                    <i class="fa fa-whatsapp text-success me-2"/> <field name="name"/>
+                                </h1>
+                                <div class="d-flex gap-2">
+                                    <field name="status_badge" widget="badge" options="{'class_map': {'Logged In': 'success', 'Logged Out': 'danger'}}"/>
+                                    <field name="connection_status" widget="badge" options="{'class_map': {'WORKING': 'success', 'STOPPED': 'danger', 'STARTING': 'warning', 'SCAN_QR_CODE': 'info'}}"/>
+                                </div>
+                            </div>
+                            <!-- API Details + Options Row -->
+                            <div class="row g-3">
+                                <!-- API Details Card -->
+                                <div class="col-12 col-md-8">
+                                    <div class="bg-view border rounded-3 p-3 h-100 d-flex flex-column gap-2">
+                                        <label for="client_secret" class="fw-bold text-dark"/>
+                                        <field name="client_secret" placeholder="Enter your API Key here" class="w-100"/>
+                                        <label for="webhook_url" class="fw-bold text-dark"/>
+                                        <field name="webhook_url" placeholder="Enter your Webhook URL here" class="w-100"/>
+                                    </div>
+                                </div>
+                                <!-- Options Card -->
+                                <div class="col-12 col-md-4">
+                                    <div class="bg-view border rounded-3 p-3 h-100 d-flex flex-column gap-3">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <label for="set_typing" class="fw-bold text-dark"/>
+                                            <field name="set_typing" widget="boolean_toggle"/>
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <label for="auto_send" class="fw-bold text-dark"/>
+                                            <field name="auto_send" widget="boolean_toggle"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- API Usage Card -->
+                            <div class="bg-view border rounded-3 p-3 d-flex flex-column gap-2">
+                                <label for="api_usage_percent" class="fw-bold text-dark"/>
+                                <field name="api_usage_percent" widget="progressbar" options="{'max_value': 100, 'bar_color': 'success'}"/>
+                                <div class="d-flex flex-wrap gap-4 mt-2 align-items-center text-dark">
+                                    <div><b>Used:</b> <field name="requests_made_today" readonly="1"/></div>
+                                    <div><b>Quota:</b> <field name="max_requests_per_day" readonly="1"/></div>
+                                    <div><b>Left:</b> <field name="requests_left" readonly="1"/></div>
+                                    <button name="refresh_usage" string="Refresh Usage" type="object" icon="oi-arrow-clockwise" class="btn btn-sm btn-outline-secondary ms-auto"/>
+                                </div>
+                            </div>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action -->
+        <record model="ir.actions.act_window" id="action_whatsapp_connection">
+            <field name="name">Whatsapp Connections</field>
+            <field name="res_model">whatsapp.connection</field>
+            <field name="view_mode">list,form</field>
+        </record>
+    </data>
+</odoo>

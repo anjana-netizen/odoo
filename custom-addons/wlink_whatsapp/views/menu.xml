@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <menuitem id="whatsapp_root_base_label" name="Whatsapp" parent="base.menu_custom"  groups="wlink_whatsapp.group_wlink_manager" sequence="10000"/>
+
+        <menuitem id="whatsapp_connection_menu" name="Connections" action="action_whatsapp_connection" parent="whatsapp_root_base_label"/>
+        <menuitem id="whatsapp_template_menu" name="Templates" action="action_whatsapp_templates_editor" parent="whatsapp_root_base_label"/>
+        <menuitem id="whatsapp_base_url_menu" name="Base URL" action="action_whatsapp_base_url_editor" parent="whatsapp_root_base_label"/>
+        <menuitem id="whatsapp_sync_menu" name="Synchronization" action="action_whatsapp_sync_editor" parent="whatsapp_root_base_label"/>
+
+        <menuitem id="whatsapp_sync_menu_contacts" name="Import from Whatsapp" groups="wlink_whatsapp.group_wlink_manager" action="action_whatsapp_sync_editor" parent="contacts.menu_contacts"/>
+    </data>
+</odoo>

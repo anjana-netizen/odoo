@@ -1,0 +1,41 @@
+<odoo>
+    <data>
+        <menuitem name="WhatsApp"
+                  id="whatsapp_menu_main"
+                  groups="wlink_whatsapp.group_wlink_manager"
+                  web_icon="wlink_marketing_whatsapp,static/description/menu_icon.png"
+                  sequence="260"/>
+
+        <menuitem name="Messages"
+                  id="whatsapp_message_menu"
+                  parent="whatsapp_menu_main"
+                  sequence="1"
+                  action="action_whatsapp_messages"
+        />
+
+        <menuitem name="Configuration"
+                  id="whatsapp_configuration_menu"
+                  parent="whatsapp_menu_main"
+        />
+
+
+        <menuitem id="menu_whatsapp_marketing" name="WhatsApp Marketing" parent="whatsapp_menu_main"
+                  sequence="21"/>
+        <menuitem name="Templates"
+                  id="whatsapp_template_menu"
+                  parent="menu_whatsapp_marketing"
+                  sequence="0"
+                  action="whatsapp_template_action_id"/>
+        <menuitem id="menu_whatsapp_message"
+                  action="action_whatsapp_message"
+                  name="Mass Messages" sequence="1"
+                  parent="menu_whatsapp_marketing"/>
+        <menuitem id="menu_whatsapp_campaign_list"
+                  name="Campaign Lists"
+                  parent="menu_whatsapp_marketing"
+                  action="action_whatsapp_campaign_list"
+                  sequence="5"/>
+
+        <menuitem id="whatsapp_menus_root" name="WhatsApp Marketing" sequence="10"/>
+    </data>
+</odoo>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Define the Application Category -->
+    <record id="module_category_whatsapp" model="ir.module.category">
+        <field name="name">WhatsApp</field>
+        <field name="description">User access levels for WhatsApp module</field>
+        <field name="sequence">31</field>
+    </record>
+
+    <!-- Odoo 19: Define the Group Privilege that links the group to the category -->
+    <record id="res_groups_privilege_whatsapp_manager" model="res.groups.privilege">
+        <field name="name">Manager</field>
+        <field name="sequence">10</field>
+        <field name="category_id" ref="wlink_whatsapp.module_category_whatsapp"/>
+    </record>
+
+    <!-- Define the Group itself, linking to the privilege -->
+    <record id="group_wlink_manager" model="res.groups">
+        <field name="name">Manager</field>
+        <field name="sequence">10</field>
+        <field name="privilege_id" ref="wlink_whatsapp.res_groups_privilege_whatsapp_manager"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="comment">The user will be able to manage WhatsApp connections and templates.</field>
+    </record>
+</odoo>
