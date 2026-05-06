@@ -1,8 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_whatsapp_messages,access_whatsapp_messages,model_whatsapp_messages,wlink_whatsapp.group_wlink_manager,1,1,1,1
-access_whatsapp_preview_user,access.whatsapp.preview,model_whatsapp_preview,wlink_whatsapp.group_wlink_manager,1,1,1,1
-access_whatsapp_template_administrator,access.whatsapp.template,model_whatsapp_template,wlink_whatsapp.group_wlink_manager,1,1,1,1
-access_whatsapp_template_user,access.whatsapp.template,model_whatsapp_template,wlink_whatsapp.group_wlink_manager,1,0,0,0
-access_whatsapp_marketing,access_whatsapp_marketing,model_whatsapp_marketing,wlink_whatsapp.group_wlink_manager,1,1,1,1
-access_whatsapp_message_schedule_date,access_whatsapp_message_schedule_date,model_whatsapp_message_schedule_date,wlink_whatsapp.group_wlink_manager,1,1,1,1
-access_campaign_list,access_campaign_list,model_whatsapp_campaign_list,wlink_whatsapp.group_wlink_manager,1,1,1,1
