@@ -1,0 +1,1 @@
+web: odoo -c odoo.conf --http-port=$PORT --db_host=127.0.0.1 --db_user=$DB_USER --db_password=$DB_PASSWORD
